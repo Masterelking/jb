@@ -462,8 +462,34 @@ moveSlide(1); }, 3000);
 
         typeEffect();
     });
-</script>     
-    
+</script>    
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          const lightbox = document.getElementById('lightbox');
+          const lightboxImg = document.getElementById('lightbox-image');
+          const close = document.querySelector('.close');
+        
+          document.querySelectorAll('.item img').forEach(item => {
+            item.addEventListener('click', () => {
+              lightbox.style.display = 'block';
+              lightboxImg.src = item.src;
+            });
+          });
+        
+          close.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+          });
+        
+          lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+              lightbox.style.display = 'none';
+            }
+          });
+        });
+    </script>
+</body>    
 
 
 </html>
